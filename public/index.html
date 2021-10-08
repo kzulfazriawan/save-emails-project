@@ -16,53 +16,14 @@
                 <nav class="uk-navbar-container" uk-navbar>
                     <div class="uk-navbar-left">
                         <ul class="uk-navbar-nav">
-                            <li class="uk-active"><a href="#">Email</a></li>
-                            <li><a href="#">Event</a></li>
-                            <li><a href="#">Send mail</a></li>
+                            <li class="uk-active"><a href="#!/">Email</a></li>
+                            <li><a href="#!/event">Event</a></li>
+                            <li><a href="#!/send_emails">Send mail</a></li>
                         </ul>
                     </div>
                 </nav>
             </div>
-            <div ng-controller="Email" ng-init="get()">
-                <div class="toggle">
-                    <button type="button" class="uk-button uk-button-default" uk-toggle="target: .toggle">Create new</button>
-                    <table class="uk-table uk-table-divider">
-                        <thead>
-                            <tr>
-                                <th>#ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Created at</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="item in data">
-                                <td>{{ item.id }}</td>
-                                <td>{{ item.name }}</td>
-                                <td>{{ item.email }}</td>
-                                <td>{{ item.created_at }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div hidden class="toggle">
-                    <form ng-submit="post()">
-                        <fieldset class="uk-fieldset">
-                            <legend class="uk-legend">Add Email</legend>
-                            <div class="uk-margin">
-                                <input class="uk-input" type="text" placeholder="Name..." ng-model="form.name">
-                            </div>
-                            <div class="uk-margin">
-                                <input class="uk-input" type="email" placeholder="Email..." ng-model="form.email">
-                            </div>
-                            <div class="uk-margin">
-                                <button type="submit" class="uk-button uk-button-primary">Create</button>
-                                <button type="button" class="uk-button uk-button-default" uk-toggle="target: .toggle">Cancel</button>
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
+            <div ng-view class="uk-text-small"></div>
 		</div>
 
 		<!-- JS FILES -->

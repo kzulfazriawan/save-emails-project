@@ -29,7 +29,10 @@ class Emails(Resource, Models):
         )
 
         if 'errors' in validation:
-            return validation
+            return self.response.json(
+                validation,
+                422
+            )
 
         request = self.requests.parser
 

@@ -4,11 +4,11 @@ module.exports = function($scope, $timeout, $window, Http){
     $scope.data  = null;
     $scope.form  = {
         name : null,
-        email: null
+        description: null
     }
 
     $scope.get = function(){
-        let target = '/emails';
+        let target = '/event';
 
         Http.sendGet(target).then(
             function success(response){
@@ -27,13 +27,13 @@ module.exports = function($scope, $timeout, $window, Http){
     $scope.post = function(){
         // ____sending post to login API____
         let method = 'POST';
-        let target = '/emails';
+        let target = '/event';
         let data   = {data: $scope.form};
 
         Http.sendAsJson(method, target, data).then(
             function success(response){
                 $timeout(function(){
-                    $window.location.href = '/';
+                    $window.location.reload();
                 });
             },
 

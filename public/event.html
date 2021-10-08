@@ -6,7 +6,7 @@
                 <tr>
                     <th>#ID</th>
                     <th>Name</th>
-                    <th>Email</th>
+                    <th>Description</th>
                     <th>Created at</th>
                 </tr>
             </thead>
@@ -14,7 +14,7 @@
                 <tr ng-repeat="item in data">
                     <td>{{ item.id }}</td>
                     <td>{{ item.name }}</td>
-                    <td>{{ item.email }}</td>
+                    <td>{{ item.description }}</td>
                     <td>{{ item.created_at }}</td>
                 </tr>
             </tbody>
@@ -23,12 +23,12 @@
     <div hidden class="toggle">
         <form ng-submit="post()">
             <fieldset class="uk-fieldset">
-                <legend class="uk-legend">Add Email</legend>
+                <legend class="uk-legend">Add Event</legend>
                 <div class="uk-margin">
                     <input class="uk-input" type="text" placeholder="Name..." ng-model="form.name" required>
                 </div>
                 <div class="uk-margin">
-                    <input class="uk-input" type="email" placeholder="Email..." ng-model="form.email" required>
+                    <textarea class="uk-textarea" rows="5" placeholder="Description..." ng-model="form.description" required></textarea>
                 </div>
                 <div class="uk-margin">
                     <button type="submit" class="uk-button uk-button-primary">Create</button>

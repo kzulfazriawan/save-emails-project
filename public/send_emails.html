@@ -1,0 +1,54 @@
+<div ng-init="get()">
+    <div class="toggle">
+        <button type="button" class="uk-button uk-button-default" uk-toggle="target: .toggle">Create new</button>
+        <table class="uk-table uk-table-divider">
+            <thead>
+                <tr>
+                    <th>#ID</th>
+                    <th>Event</th>
+                    <th>Subject</th>
+                    <th>Content</th>
+                    <th>Status</th>
+                    <th>Timestamp</th>
+                    <th>Created at</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in data">
+                    <td>{{ item.id }}</td>
+                    <td></td>
+                    <td>{{ item.subject }}</td>
+                    <td>{{ item.content }}</td>
+                    <td><span class="uk-text-success" ng-show="item.is_send">Sent</span><span class="uk-text-danger" ng-hide="item.is_send">Waiting</span></td>
+                    <td>{{ item.timestamp }}</td>
+                    <td>{{ item.created_at }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div hidden class="toggle" ng-init="event()">
+        <form ng-submit="post()">
+            <fieldset class="uk-fieldset">
+                <legend class="uk-legend">Add Send emails</legend>
+                <div class="uk-margin">
+                    <select class="uk-select" ng-options="item.id as item.name for item in select" ng-model="form.event_id" required>
+                        <option disabled selected value="">-Event-</option>
+                    </select>
+                </div>
+                <div class="uk-margin">
+                    <input class="uk-input" type="text" placeholder="subject..." ng-model="form.email_subject" required/>
+                </div>
+                <div class="uk-margin">
+                    <textarea class="uk-textarea" rows="5" placeholder="Content..." ng-model="form.email_content" required></textarea>
+                </div>
+                <div class="uk-margin">
+                    <input type="datetime-local" class="uk-input" placeholder="Timestamp..." ng-model="form.timestamp" required/>
+                </div>
+                <div class="uk-margin">
+                    <button type="submit" class="uk-button uk-button-primary">Create</button>
+                    <button type="button" class="uk-button uk-button-default" uk-toggle="target: .toggle">Cancel</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
