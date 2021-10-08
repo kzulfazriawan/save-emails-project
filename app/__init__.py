@@ -28,7 +28,7 @@ class App:
         self.app.config['MAIL_SEVER'] = os.getenv('EMAIL_SMTP')
         self.app.config['MAIL_PORT'] = os.getenv('EMAIL_PORT')
         self.app.config['MAIL_TLS'] = os.getenv('EMAIL_TLS')
-        self.app.config['MAIL_USERNAEM'] = os.getenv('EMAIL_USERNAME')
+        self.app.config['MAIL_USERNAME'] = os.getenv('EMAIL_USERNAME')
         self.app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASSWORD')
         self.app.config['MAIL_USE_SSL'] = os.getenv('EMAIL_SSL')
 
