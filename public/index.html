@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>HTML .: </title>
+		<link rel="icon" href="img/favicon.ico">
+
+		<link rel="stylesheet" type="text/css" href="/dist/uikit.min.css">
+	</head>
+
+	<body id="day-theme" class="uk-flex uk-flex-center uk-flex-middle uk-background-muted uk-height-viewport" data-uk-height-viewport
+		ng-app="App">
+		<div class="uk-width-expand uk-padding-small">
+            <div class="uk-position-top-center">
+                <nav class="uk-navbar-container" uk-navbar>
+                    <div class="uk-navbar-left">
+                        <ul class="uk-navbar-nav">
+                            <li class="uk-active"><a href="#">Email</a></li>
+                            <li><a href="#">Event</a></li>
+                            <li><a href="#">Send mail</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div ng-controller="Email" ng-init="get()">
+                <div class="toggle">
+                    <button type="button" class="uk-button uk-button-default" uk-toggle="target: .toggle">Create new</button>
+                    <table class="uk-table uk-table-divider">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Created at</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in data">
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.email }}</td>
+                                <td>{{ item.created_at }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div hidden class="toggle">
+                    <form ng-submit="post()">
+                        <fieldset class="uk-fieldset">
+                            <legend class="uk-legend">Add Email</legend>
+                            <div class="uk-margin">
+                                <input class="uk-input" type="text" placeholder="Name..." ng-model="form.name">
+                            </div>
+                            <div class="uk-margin">
+                                <input class="uk-input" type="email" placeholder="Email..." ng-model="form.email">
+                            </div>
+                            <div class="uk-margin">
+                                <button type="submit" class="uk-button uk-button-primary">Create</button>
+                                <button type="button" class="uk-button uk-button-default" uk-toggle="target: .toggle">Cancel</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+		</div>
+
+		<!-- JS FILES -->
+		<script src="/dist/uikit.min.js"></script>
+		<script src="/dist/uikit-icons.min.js"></script>
+		<script src="/dist/main.js"></script>
+	</body>
+</html>

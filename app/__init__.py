@@ -5,6 +5,7 @@ from inspect import isclass
 from dotenv import load_dotenv
 from flask import Flask
 from flask_apscheduler import APScheduler
+from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_mail import Mail
 
@@ -33,6 +34,7 @@ class App:
         self.app.config['MAIL_USE_SSL'] = True if os.getenv('EMAIL_SSL') == 'True' else False
 
         self.mail = Mail(self.app)
+        CORS(self.app)
 
     def daemon(self):
         scheduler = APScheduler()
