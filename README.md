@@ -6,3 +6,8 @@
 4. Go to migrations directory and setup alembic.ini 
 6. Migrate using alembic ``alembic upgrade head`` or ``python -m alembic upgrade head``
 7. Start the application ``python main.py``
+
+# Endpoint available
+- To create an email /email **POST & GET**
+- To create an event /event **POST & GET**
+- To save_email /save_emails **POST & GET**
