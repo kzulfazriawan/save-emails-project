@@ -233,16 +233,15 @@ class Query:
             return True
 
     def edit(self, **kwargs):
-        self.first()
+        data = self.q.first()
 
         for k, v in kwargs.items():
-            setattr(self.__result, k, v)
-        self.commit(self.__result)
-        return self.__result
+            setattr(data, k, v)
+
+        self.commit()
+        return self.first()
 
     def commit(self, query=None):
-        self.s.flush()
-
         try:
             self.s.commit()
 

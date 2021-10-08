@@ -23,7 +23,8 @@ class App(Init):
 
     def run(self):
         self.app.run(
-            debug=True
+            debug=True,
+            #use_reloader=False
         )
 
 

@@ -1,4 +1,5 @@
 import os
+import datetime
 from dotenv import load_dotenv
 from flask_mail import Message
 
@@ -21,10 +22,12 @@ class CheckEmail(Models):
             'is_send', False
         )
         for item in data.all(object()):
-            if self.sending_email(item.subject, item.content):
-                print(data.edit)
+            if item.timestamp < datetime.datetime.now():
+                if self.sending_email(item.subject, item.content):
+                    self.update_email(item.id)
+                    print('sent')
             else:
-                print('email not sent')
+                print('wait')
 
     def update_email(self, id):
         data = self.email_send.select().filter(
