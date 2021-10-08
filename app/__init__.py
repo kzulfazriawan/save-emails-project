@@ -25,12 +25,12 @@ class App:
     def __init__(self):
         self.app.config['SECRET_KEY'] = 'HELLOWORLD123'
         self.app.config['SCHEDULER_API_ENABLED'] = True
-        self.app.config['MAIL_SEVER'] = os.getenv('EMAIL_SMTP')
+        self.app.config['MAIL_SERVER'] = os.getenv('EMAIL_SMTP')
         self.app.config['MAIL_PORT'] = os.getenv('EMAIL_PORT')
-        self.app.config['MAIL_TLS'] = os.getenv('EMAIL_TLS')
+        self.app.config['MAIL_USE_TLS'] = True if os.getenv('EMAIL_TLS') == 'True' else False
         self.app.config['MAIL_USERNAME'] = os.getenv('EMAIL_USERNAME')
         self.app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASSWORD')
-        self.app.config['MAIL_USE_SSL'] = os.getenv('EMAIL_SSL')
+        self.app.config['MAIL_USE_SSL'] = True if os.getenv('EMAIL_SSL') == 'True' else False
 
         self.mail = Mail(self.app)
 

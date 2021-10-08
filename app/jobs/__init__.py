@@ -1,6 +1,11 @@
+import os
+from dotenv import load_dotenv
 from flask_mail import Message
 
 from databases import Models
+
+
+load_dotenv()
 
 
 class CheckEmail(Models):
@@ -34,6 +39,7 @@ class CheckEmail(Models):
             msg = Message(
                 subject,
                 recipients=[item.email for item in recipients.all(object())],
+                sender=("Me", os.getenv('EMAIL_USERNAME')),
                 body=content
             )
             self.mail.send(msg)
