@@ -2,8 +2,11 @@ import os
 from abc import ABC
 from inspect import isclass
 
+from dotenv import load_dotenv
 from flask import Flask
+from flask_apscheduler import APScheduler
 from flask_jwt_extended import JWTManager
+from flask_mail import Mail
 
 from metric.src.filesystem import auto
 
@@ -13,12 +16,29 @@ APPPATH = os.path.join(ROOTPATH, 'app')
 FLASK = Flask(__name__)
 JWT = JWTManager(FLASK)
 
+load_dotenv()
+
 
 class App:
     app = FLASK
 
     def __init__(self):
         self.app.config['SECRET_KEY'] = 'HELLOWORLD123'
+        self.app.config['SCHEDULER_API_ENABLED'] = True
+        self.app.config['MAIL_SEVER'] = os.getenv('EMAIL_SMTP')
+        self.app.config['MAIL_PORT'] = os.getenv('EMAIL_PORT')
+        self.app.config['MAIL_TLS'] = os.getenv('EMAIL_TLS')
+        self.app.config['MAIL_USERNAEM'] = os.getenv('EMAIL_USERNAME')
+        self.app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASSWORD')
+        self.app.config['MAIL_USE_SSL'] = os.getenv('EMAIL_SSL')
+
+        self.mail = Mail(self.app)
+
+    def daemon(self):
+        scheduler = APScheduler()
+        scheduler.init_app(self.app)
+
+        return scheduler
 
 
 class Route(App):
